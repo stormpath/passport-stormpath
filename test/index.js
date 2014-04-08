@@ -5,3 +5,9 @@ describe('test framework', function(){
     assert.equal(true,true);
   });
 });
+
+describe('lib entry', function(){
+  it('should export an object', function(){
+    assert.equal(typeof require('../lib'),"object");
+  });
+});
