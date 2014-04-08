@@ -4,7 +4,8 @@
   "description": "Official Stormpath Passport Strategy",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "coverage": "node ./node_modules/istanbul/lib/cli cover ./node_modules/mocha/bin/_mocha"
   },
   "author": {
     "name": "Stormpath, Inc.",
@@ -19,6 +20,8 @@
     "chai": "^1.9.1",
     "grunt-contrib-watch": "^0.6.1",
     "grunt-contrib-jshint": "^0.10.0",
-    "jshint-stylish": "^0.1.5"
+    "jshint-stylish": "^0.1.5",
+    "istanbul": "^0.2.7",
+    "mocha": "^1.18.2"
   }
 }
