@@ -1,0 +1,15 @@
+{
+  "name": "passport-stormpath",
+  "version": "0.0.0",
+  "description": "Official Stormpath Passport Strategy",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": {
+    "name": "Stormpath, Inc.",
+    "email": "support@stormpath.com",
+    "url": "http://www.stormpath.com"
+  },
+  "license": "Apache-2.0"
+}
