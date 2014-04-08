@@ -11,5 +11,11 @@
     "email": "support@stormpath.com",
     "url": "http://www.stormpath.com"
   },
-  "license": "Apache-2.0"
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "grunt": "^0.4.4",
+    "grunt-cli": "^0.1.13",
+    "grunt-mocha-test": "^0.10.0",
+    "chai": "^1.9.1"
+  }
 }
