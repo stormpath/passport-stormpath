@@ -32,4 +32,13 @@ describe('Strategy instance', function(){
         var instance = new lib({apiKeyFilePath:"x",appHref:"x"});
         assert.equal(typeof instance.authenticate, "function");
     });
+    it('should have a name property',function(){
+        var instance = new lib({apiKeyFilePath:"x",appHref:"x"});
+        assert.equal(instance.name, "stormpath");
+    });
 });
+
+// TODO
+// no username and password
+// bad username and password
+// user is found

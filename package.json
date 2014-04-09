@@ -2,7 +2,7 @@
   "name": "passport-stormpath",
   "version": "0.0.0",
   "description": "Official Stormpath Passport Strategy",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "coverage": "node ./node_modules/istanbul/lib/cli cover ./node_modules/mocha/bin/_mocha"
