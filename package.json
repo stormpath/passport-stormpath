@@ -4,8 +4,17 @@
   "description": "Official Stormpath Passport Strategy",
   "main": "lib/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "./node_modules/mocha/bin/mocha",
     "coverage": "node ./node_modules/istanbul/lib/cli cover ./node_modules/mocha/bin/_mocha"
+  },
+  "keywords": [
+    "stormpath",
+    "passport"
+  ],
+  "homepage": "https://github.com/stormpath/passport-stormpath",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/stormpath/passport-stormpath.git"
   },
   "author": {
     "name": "Stormpath, Inc.",
