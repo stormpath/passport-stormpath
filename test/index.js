@@ -22,11 +22,8 @@ describe('lib entry', function(){
 });
 
 describe('Strategy instance', function(){
-    it('should throw without apiKeyFilePath',function(){
-        expect(function(){return new lib({appHref:"x"});}).throws(/^apiKeyFilePath not provided$/);
-    });
-    it('should throw without appHref',function(){
-        expect(function(){return new lib({apiKeyFilePath:"x"});}).throws(/^appHref not provided$/);
+    it('should throw without spApp',function(){
+        expect(function(){return new lib();}).throws(/^spApp not provided$/);
     });
     it('should have an authenticate method',function(){
         var instance = new lib({apiKeyFilePath:"x",appHref:"x"});
