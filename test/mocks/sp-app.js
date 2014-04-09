@@ -12,7 +12,7 @@ MockSpApp.prototype.authenticateAccount = function(data,cb) {
     }else{
         cb({userMessage:"Invalid username or password."});
     }
-    
+
 };
 
 module.exports = MockSpApp;

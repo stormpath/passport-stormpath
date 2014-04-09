@@ -4,7 +4,7 @@ module.exports = {
 
         },
         query:{
-            
+
         }
     },
     good: {
@@ -13,7 +13,7 @@ module.exports = {
             password: "good"
         },
         query:{
-            
+
         }
     },
     bad: {
@@ -22,7 +22,7 @@ module.exports = {
             password: "bad"
         },
         query:{
-            
+
         }
     },
     malformed:{
