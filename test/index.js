@@ -1,7 +1,9 @@
 var assert = require('chai').assert;
 var expect = require('chai').expect;
 var lib = require('../lib');
+var sinon = require('sinon');
 
+var MockSpApp = require('./mocks/sp-app');
 
 describe('test framework', function(){
   it('should assert true', function(){
@@ -26,11 +28,35 @@ describe('Strategy instance', function(){
         expect(function(){return new lib();}).throws(/^spApp not provided$/);
     });
     it('should have an authenticate method',function(){
-        var instance = new lib({apiKeyFilePath:"x",appHref:"x"});
+        var instance = new lib({spApp:new MockSpApp()});
         assert.equal(typeof instance.authenticate, "function");
     });
+    it('should call fail if no data provided',function(){
+        var instance = new lib({spApp:new MockSpApp()});
+        var fail = sinon.spy();
+        instance.fail = fail;
+        expect(instance.authenticate.bind(instance,require('./mocks/req').empty)).to.not.throw();
+        assert(fail.called,'fail was not called');
+    });
+    it('should call success if valid login is provieded',function(){
+        var instance = new lib({spApp:new MockSpApp()});
+        var success = sinon.spy();
+        instance.success = success;
+        expect(instance.authenticate.bind(instance,require('./mocks/req').good)).to.not.throw();
+        assert(success.called,'success was not called');
+    });
+    it('should call fail and not success if invalid login is provieded',function(){
+        var instance = new lib({spApp:new MockSpApp()});
+        var fail = sinon.spy();
+        var success = sinon.spy();
+        instance.fail = fail;
+        instance.success = success;
+        expect(instance.authenticate.bind(instance,require('./mocks/req').bad)).to.not.throw();
+        assert(fail.called,'fail was called');
+        assert(!success.called,'success was called but shouldnt have been');
+    });
     it('should have a name property',function(){
-        var instance = new lib({apiKeyFilePath:"x",appHref:"x"});
+        var instance = new lib({spApp:new MockSpApp()});
         assert.equal(instance.name, "stormpath");
     });
 });
