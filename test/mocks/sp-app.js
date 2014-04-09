@@ -10,7 +10,7 @@ MockSpApp.prototype.authenticateAccount = function(data,cb) {
             }
         });
     }else{
-        cb(true);
+        cb({userMessage:"Invalid username or password."});
     }
     
 };

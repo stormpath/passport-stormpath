@@ -31,12 +31,33 @@ describe('Strategy instance', function(){
         var instance = new lib({spApp:new MockSpApp()});
         assert.equal(typeof instance.authenticate, "function");
     });
-    it('should call fail if no data provided',function(){
+    it('should call fail if an empty request body provided',function(){
         var instance = new lib({spApp:new MockSpApp()});
         var fail = sinon.spy();
         instance.fail = fail;
         expect(instance.authenticate.bind(instance,require('./mocks/req').empty)).to.not.throw();
         assert(fail.called,'fail was not called');
+    });
+    it('should call fail if a malformed request body provided',function(){
+        var instance = new lib({spApp:new MockSpApp()});
+        var fail = sinon.spy();
+        instance.fail = fail;
+        expect(instance.authenticate.bind(instance,require('./mocks/req').malformed)).to.not.throw();
+        assert(fail.called,'fail was not called');
+    });
+    it('should call fail if body params are not strings',function(){
+        var instance = new lib({spApp:new MockSpApp()});
+        var fail = sinon.spy();
+        instance.fail = fail;
+        expect(instance.authenticate.bind(instance,require('./mocks/req').notStrings)).to.not.throw();
+        assert(fail.called,'fail was not called');
+    });
+    it('should support custom fields',function(){
+        var instance = new lib({spApp:new MockSpApp(),usernameField:"un",passwordField:"pw"});
+        var success = sinon.spy();
+        instance.success = success;
+        expect(instance.authenticate.bind(instance,require('./mocks/req').custom)).to.not.throw();
+        assert(success.called,'success was not called');
     });
     it('should call success if valid login is provieded',function(){
         var instance = new lib({spApp:new MockSpApp()});

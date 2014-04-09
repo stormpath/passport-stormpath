@@ -24,5 +24,20 @@ module.exports = {
         query:{
             
         }
+    },
+    malformed:{
+
+    },
+    notStrings:{
+        body:{
+            username: {},
+            password: {}
+        }
+    },
+    custom: {
+        body:{
+            un:"good",
+            pw:"good"
+        }
     }
 };
