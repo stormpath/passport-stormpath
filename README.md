@@ -4,6 +4,8 @@
 
 This is an authentication strategy for use with the [Passport](http://passportjs.org/) middleware.  Use it in your application to authenticate Stormpath accounts via username and password.
 
+Want to use this with Express?  Check out the [Stormpath Express Sample](https://github.com/stormpath/stormpath-express-sample)
+
 ### Links
 + [Node.js Quickstart Guide](http://docs.stormpath.com/nodejs/api/home#quickstart) - Get started with Stormpath in an hour!
 + [Node.js Product Guide](http://docs.stormpath.com/nodejs/api/home) - In depth product documnetation for Stormpath's Node.js SDK
@@ -18,46 +20,54 @@ To use this module in your Node.js application:
 npm install passport-stormpath
 ```
 
-### Express.js example
+### Usage
 
-Want to use this with Express?  Check out the [Stormpath Express Sample](https://github.com/stormpath/stormpath-express-sample)
+If you have exported your API and App information to the environment as `STORMPATH_API_KEY_ID`, `STORMPATH_API_KEY_SECRET`, `STORMPATH_APP_HREF`, then you may simply do this:
 
+```javascript
+var passport = require('passport');
+var StormpathStrategy = require('passport-stormpath');
+var strategy = new StormpathStrategy();
 
-### General example
+passport.use(strategy);
+passport.serializeUser(strategy.serializeUser);
+passport.deserializeUser(strategy.deserializeUser);
+```
+
+### Options
+
+You can manually pass in your API and App information:
+
+```javascript
+var strategy = new StormpathStrategy({
+    apiKeyId: "STORMPATH_API_KEY_ID",
+    apiKeySecret: "STORMPATH_API_KEY_SECRET",
+    appHref: "STORMPATH_APP_HREF"
+});
+```
+
+Or define your own client and app:
 
 ```javascript
 
-var passport = require('passport');
 var stormpath = require('stormpath');
-var StormpathStrategy = require('passport-stormpath');
 
-var spClient;
+var spClient, spApp, strategy;
 
 spClient = new stormpath.Client({
-    apiKey: new stormpath.ApiKey(
-        process.env['STORMPATH_API_KEY_ID'],
-        process.env['STORMPATH_API_KEY_SECRET']
-    )
+    apiKey: new stormpath.ApiKey('STORMPATH_API_KEY_ID','STORMPATH_API_KEY_SECRET'])
 });
 
-spClient.getApplication(
-    process.env['STORMPATH_APP_HREF'],
-    function(err,app){
-        if(err){
-            throw err;
-        }
-        passport.use(new StormpathStrategy({spApp:app}));
+spApp = spClient.getApplication('STORMPATH_APP_HREF',function(err,app){
+    if(err){
+        throw err;
     }
-);
-
-passport.serializeUser(function(user, done) {
-    done(null, user.href);
+    passport.use(new StormpathStrategy({spApp:app}));
 });
 
-passport.deserializeUser(function(userHref, done) {
-    spClient.getAccount(userHref,function(err,account){
-        done(err,account);
-    });
+strategy = new StormpathStrategy({
+    spApp: spApp,
+    spClient: spClient
 });
 ```
 
