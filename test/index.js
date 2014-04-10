@@ -2,9 +2,8 @@ var assert = require('chai').assert;
 var expect = require('chai').expect;
 
 var sinon = require('sinon');
-var proxyquire = require('proxyquire');
 
-var StormpathStrategy = proxyquire('../lib/strategy',{'stormpath':require('./mocks/sp')});
+var StormpathStrategy = require('../lib/strategy');
 
 var MockSpApp = require('./mocks/sp-app');
 var MockSpClient = require('./mocks/sp-client');
@@ -122,11 +121,44 @@ describe('Strategy instance', function(){
         assert(fail.called,'fail was called');
         assert(!success.called,'success was called but shouldnt have been');
     });
-    it('should be instantiabnle without defining a client or app',function(){
-        expect(function(){return new StormpathStrategy({});}).to.not.throw();
+    it('should be instantiable without a client or app if api values are provided',function(){
+        expect(function(){
+            return new StormpathStrategy({
+                apiKeyId:"x",
+                apiKeySecret: "x",
+                appHref: "x"
+            });
+        }).to.not.throw();
     });
-    it('should be instantiabnle with a defined app, but no client',function(){
-        expect(function(){return new StormpathStrategy({spApp:new MockSpApp()});}).to.not.throw();
+    it('should be instantiable with a app object and client credentials',function(){
+        expect(function(){
+            return new StormpathStrategy({
+                spApp:new MockSpApp(),
+                apiKeyId: "x",
+                apiKeySecret: "x",
+            });
+        }).to.not.throw();
+    });
+    it('should be instantiable with a client object and app href',function(){
+        expect(function(){
+            return new StormpathStrategy({
+                appHref: "x",
+                spClient: new MockSpClient()
+            });
+        }).to.not.throw();
+    });
+    it('should not be instantiable if no client or app data is provided',function(){
+        expect(function(){
+            return new StormpathStrategy();
+        }).to.throw();
+    });
+    it('should not be instantiable if no app data is provided',function(){
+        var stormpath = require('stormpath');
+        expect(function(){
+            return new StormpathStrategy({
+                spClient: new stormpath.Client({apiKey:new stormpath.ApiKey("x","x")})
+            });
+        }).to.throw();
     });
 
     it('should return the correct data from serializeUser',function(){
