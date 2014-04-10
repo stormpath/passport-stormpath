@@ -32,7 +32,11 @@
     "jshint-stylish": "^0.1.5",
     "istanbul": "^0.2.7",
     "mocha": "^1.18.2",
-    "sinon": "^1.9.1"
+    "sinon": "^1.9.1",
+    "proxyquire": "^0.6.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "stormpath": "^0.1.2",
+    "passport": "^0.2.0"
+  }
 }
