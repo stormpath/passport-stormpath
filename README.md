@@ -71,6 +71,7 @@ strategy = new StormpathStrategy({
 });
 ```
 
+**Security tip**:  we recommend storing your API credintials in a keyfile, please see the [ApiKey documentation](http://docs.stormpath.com/nodejs/api/apiKey) for instructions.
 
 ### Contributing
 
