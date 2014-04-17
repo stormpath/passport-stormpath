@@ -1,15 +1,42 @@
 {
   "name": "passport-stormpath",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Official Stormpath Passport Strategy",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/mocha/bin/mocha",
+    "coverage": "node ./node_modules/istanbul/lib/cli cover ./node_modules/mocha/bin/_mocha"
+  },
+  "keywords": [
+    "stormpath",
+    "passport"
+  ],
+  "homepage": "https://github.com/stormpath/passport-stormpath",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/stormpath/passport-stormpath.git"
   },
   "author": {
     "name": "Stormpath, Inc.",
     "email": "support@stormpath.com",
     "url": "http://www.stormpath.com"
   },
-  "license": "Apache-2.0"
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "grunt": "^0.4.4",
+    "grunt-cli": "^0.1.13",
+    "grunt-mocha-test": "^0.10.0",
+    "chai": "^1.9.1",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-contrib-jshint": "^0.10.0",
+    "jshint-stylish": "^0.1.5",
+    "istanbul": "^0.2.7",
+    "mocha": "^1.18.2",
+    "sinon": "^1.9.1",
+    "proxyquire": "^0.6.0"
+  },
+  "dependencies": {
+    "stormpath": "^0.1.2",
+    "passport": "^0.2.0"
+  }
 }
