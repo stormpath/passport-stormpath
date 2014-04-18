@@ -7,8 +7,7 @@ This is an authentication strategy for use with the [Passport](http://passportjs
 Want to use this with Express?  Check out the [Stormpath Express Sample](https://github.com/stormpath/stormpath-express-sample)
 
 ### Links
-+ [Node.js Quickstart Guide](http://docs.stormpath.com/nodejs/api/home#quickstart) - Get started with Stormpath in an hour!
-+ [Node.js Product Guide](http://docs.stormpath.com/nodejs/api/home) - In depth product documnetation for Stormpath's Node.js SDK
++ [Node.js Quickstart & API Documentation](http://docs.stormpath.com/nodejs/api/home#quickstart) - Get started with Stormpath in an hour!
 + [Stormpath's site](http://stormpath.com/)
 + [Stormpath Support](https://support.stormpath.com/home)
 
@@ -34,15 +33,17 @@ passport.serializeUser(strategy.serializeUser);
 passport.deserializeUser(strategy.deserializeUser);
 ```
 
+**Security tip**:  we recommend storing your API credintials in a keyfile, please see the [ApiKey documentation](http://docs.stormpath.com/nodejs/api/apiKey) for instructions.
+
 ### Options
 
 You can manually pass in your API and App information:
 
 ```javascript
 var strategy = new StormpathStrategy({
-    apiKeyId: "STORMPATH_API_KEY_ID",
-    apiKeySecret: "STORMPATH_API_KEY_SECRET",
-    appHref: "STORMPATH_APP_HREF"
+    apiKeyId: process.env["STORMPATH_API_KEY_ID"],
+    apiKeySecret: process.env['STORMPATH_API_KEY_SECRET'],
+    appHref: process.env["STORMPATH_APP_HREF"]
 });
 ```
 
@@ -55,15 +56,20 @@ var stormpath = require('stormpath');
 var spClient, spApp, strategy;
 
 spClient = new stormpath.Client({
-    apiKey: new stormpath.ApiKey('STORMPATH_API_KEY_ID','STORMPATH_API_KEY_SECRET'])
+    apiKey: new stormpath.ApiKey(
+        process.env['STORMPATH_API_KEY_ID'],
+        process.env['STORMPATH_API_KEY_SECRET']
+    )
 });
 
-spApp = spClient.getApplication('STORMPATH_APP_HREF',function(err,app){
-    if(err){
-        throw err;
+spApp = spClient.getApplication(process.env['STORMPATH_APP_HREF'],
+    function(err,app){
+        if(err){
+            throw err;
+        }
+        passport.use(new StormpathStrategy({spApp:app}));
     }
-    passport.use(new StormpathStrategy({spApp:app}));
-});
+);
 
 strategy = new StormpathStrategy({
     spApp: spApp,
@@ -71,7 +77,6 @@ strategy = new StormpathStrategy({
 });
 ```
 
-**Security tip**:  we recommend storing your API credintials in a keyfile, please see the [ApiKey documentation](http://docs.stormpath.com/nodejs/api/apiKey) for instructions.
 
 ### Contributing
 
@@ -81,6 +86,6 @@ We regularly maintain our GitHub repostiory, and are quick about reviewing pull 
 
 ### Copyright ###
 
-Copyright &copy; 2013 Stormpath, Inc. and contributors.
+Copyright &copy; 2014 Stormpath, Inc. and contributors.
 
 This project is open-source via the [Apache 2.0 License](http://www.apache.org/licenses/LICENSE-2.0).
