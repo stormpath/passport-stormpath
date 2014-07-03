@@ -1,6 +1,6 @@
 {
   "name": "passport-stormpath",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Official Stormpath Passport Strategy",
   "main": "lib/index.js",
   "scripts": {
@@ -36,7 +36,7 @@
     "proxyquire": "^0.6.0"
   },
   "dependencies": {
-    "stormpath": "^0.1.2",
+    "stormpath": "^0.4.0",
     "passport": "^0.2.0"
   }
 }
