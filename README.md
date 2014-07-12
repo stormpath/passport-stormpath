@@ -33,7 +33,7 @@ passport.serializeUser(strategy.serializeUser);
 passport.deserializeUser(strategy.deserializeUser);
 ```
 
-**Security tip**:  we recommend storing your API credintials in a keyfile, please see the [ApiKey documentation](http://docs.stormpath.com/nodejs/api/apiKey) for instructions.
+**Security tip**:  we recommend storing your API credentials in a keyfile, please see the [ApiKey documentation](http://docs.stormpath.com/nodejs/api/apiKey) for instructions.
 
 ### Options
 
@@ -62,19 +62,20 @@ spClient = new stormpath.Client({
     )
 });
 
-spApp = spClient.getApplication(process.env['STORMPATH_APP_HREF'],
+spClient.getApplication(process.env['STORMPATH_APP_HREF'],
     function(err,app){
         if(err){
             throw err;
         }
-        passport.use(new StormpathStrategy({spApp:app}));
+        spApp = app;
+        strategy = new StormpathStrategy({
+            spApp: spApp,
+            spClient: spClient
+        });
+        passport.use(strategy);
     }
 );
 
-strategy = new StormpathStrategy({
-    spApp: spApp,
-    spClient: spClient
-});
 ```
 
 
@@ -82,7 +83,7 @@ strategy = new StormpathStrategy({
 
 You can make your own contributions by forking the <code>development</code> branch, making your changes, and issuing pull-requests on the <code>development</code> branch.
 
-We regularly maintain our GitHub repostiory, and are quick about reviewing pull requests and accepting changes!
+We regularly maintain our GitHub repository, and are quick about reviewing pull requests and accepting changes!
 
 ### Copyright ###
 
