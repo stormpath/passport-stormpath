@@ -37,17 +37,19 @@ passport.deserializeUser(strategy.deserializeUser);
 
 ### Options
 
-You can manually pass in your API and App information:
+You can manually pass in your API keys and App Href as string properties:
 
 ```javascript
 var strategy = new StormpathStrategy({
-    apiKeyId: process.env["STORMPATH_API_KEY_ID"],
-    apiKeySecret: process.env['STORMPATH_API_KEY_SECRET'],
-    appHref: process.env["STORMPATH_APP_HREF"]
+    apiKeyId: "STORMPATH_API_KEY_ID",
+    apiKeySecret: 'STORMPATH_API_KEY_SECRET',
+    appHref: "STORMPATH_APP_HREF"
 });
 ```
 
-Or define your own client and app:
+You can also provide your own Stormpath client instance by constructing
+it manually and then passing it and an application reference to the
+strategy constructor:
 
 ```javascript
 
@@ -76,6 +78,16 @@ spClient.getApplication(process.env['STORMPATH_APP_HREF'],
     }
 );
 
+```
+
+Account resources (e.g. Custom Data, Groups) can be expanded during the authentication process.
+Declare which resources you would like to expand by providing a comma seperated list
+as the `expansions` option:
+
+```javascript
+var strategy = new StormpathStrategy({
+    expansions: 'groups,customData'
+});
 ```
 
 

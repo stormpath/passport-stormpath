@@ -35,6 +35,28 @@ describe('strategy entry', function(){
 
 describe('Strategy instance', function(){
 
+    describe('without env configuration',function(){
+        before(function(){
+            /* unset env vars for these tests test */
+            process.env['STORMPATH_API_KEY_ID'] = "";
+            process.env['STORMPATH_API_KEY_SECRET'] = "";
+            process.env['STORMPATH_APP_HREF'] = "";
+        });
+        it('should not be instantiable if no client or app data is provided',function(){
+            expect(function(){
+                return new StormpathStrategy();
+            }).to.throw();
+        });
+        it('should not be instantiable if no app data is provided',function(){
+            var stormpath = require('stormpath');
+            expect(function(){
+                return new StormpathStrategy({
+                    spClient: new stormpath.Client({apiKey:new stormpath.ApiKey("x","x")})
+                });
+            }).to.throw();
+        });
+    });
+
     it('should have an authenticate method',function(){
         var instance = new StormpathStrategy({
             spApp:new MockSpApp(),
@@ -146,19 +168,6 @@ describe('Strategy instance', function(){
                 spClient: new MockSpClient()
             });
         }).to.not.throw();
-    });
-    it('should not be instantiable if no client or app data is provided',function(){
-        expect(function(){
-            return new StormpathStrategy();
-        }).to.throw();
-    });
-    it('should not be instantiable if no app data is provided',function(){
-        var stormpath = require('stormpath');
-        expect(function(){
-            return new StormpathStrategy({
-                spClient: new stormpath.Client({apiKey:new stormpath.ApiKey("x","x")})
-            });
-        }).to.throw();
     });
 
     it('should return the correct data from serializeUser',function(){
