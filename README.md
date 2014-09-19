@@ -35,6 +35,15 @@ passport.deserializeUser(strategy.deserializeUser);
 
 **Security tip**:  we recommend storing your API credentials in a keyfile, please see the [ApiKey documentation](http://docs.stormpath.com/nodejs/api/apiKey) for instructions.
 
+### Changelog
+
+#### 0.2.0
+
+* After authentication the value of `req.user` will now be an `Account` object from the Stormpath Node SDK.
+Previously it was an object literal.
+* Added an `expansions` option to the strategy constructor, allowing you to expand
+resources on the account during login.  See below for example usage.
+
 ### Options
 
 You can manually pass in your API keys and App Href as string properties:
