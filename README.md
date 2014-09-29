@@ -1,5 +1,7 @@
 # Stormpath Passport Strategy #
 
+[![Build Status](https://travis-ci.org/stormpath/passport-stormpath.svg)](https://travis-ci.org/stormpath/passport-stormpath)
+
 [Stormpath](http://stormpath.com/) is a User Management API that reduces development time with instant-on, scalable user infrastructure. Stormpath's intuitive API and expert support make it easy for developers to authenticate, manage, and secure users and roles in any application.
 
 This is an authentication strategy for use with the [Passport](http://passportjs.org/) middleware.  Use it in your application to authenticate Stormpath accounts via username and password.
@@ -36,6 +38,14 @@ passport.deserializeUser(strategy.deserializeUser);
 **Security tip**:  we recommend storing your API credentials in a keyfile, please see the [ApiKey documentation](http://docs.stormpath.com/nodejs/api/apiKey) for instructions.
 
 ### Changelog
+
+#### 0.2.2
+
+Fix issue where `expansions` option was not used by `deserializeUser`, thanks @doublerebel (#11)
+
+#### 0.2.1
+
+Upgrade the Stormpath Node SDK Dependency to 0.6.0
 
 #### 0.2.0
 
