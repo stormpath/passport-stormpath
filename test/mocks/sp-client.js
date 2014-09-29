@@ -9,8 +9,11 @@ MockSpClient.prototype.getApplication = function(appHref,cb) {
 };
 
 
-MockSpClient.prototype.getAccount = function(userHref,cb) {
-    cb(null,{href:userHref});
+MockSpClient.prototype.getAccount = function(/* userHref,[options],cb */) {
+    var args = Array.prototype.slice.call(arguments);
+    var href = args.shift();
+    var cb = args.pop();
+    cb(null,{href:href});
 };
 
 module.exports = MockSpClient;
