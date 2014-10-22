@@ -6,7 +6,7 @@
 
 This is an authentication strategy for use with the [Passport](http://passportjs.org/) middleware.  Use it in your application to authenticate Stormpath accounts via username and password.
 
-Want to use this with Express?  Check out the [Stormpath Express Sample](https://github.com/stormpath/stormpath-express-sample)
+Want to use this with Express?  Check out the [Stormpath Passport Express Sample](https://github.com/stormpath/stormpath-passport-express-sample)
 
 ### Links
 + [Node.js Quickstart & API Documentation](http://docs.stormpath.com/nodejs/api/home#quickstart) - Get started with Stormpath in an hour!
