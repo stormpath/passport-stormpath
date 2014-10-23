@@ -1,4 +1,4 @@
-# Stormpath Passport Strategy
+# passport-stormpath
 
 [![NPM Version](https://img.shields.io/npm/v/passport-stormpath.svg?style=flat)](https://npmjs.org/package/passport-stormpath)
 [![NPM Downloads](http://img.shields.io/npm/dm/passport-stormpath.svg?style=flat)](https://npmjs.org/package/passport-stormpath)
