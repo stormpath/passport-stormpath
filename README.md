@@ -1,4 +1,4 @@
-# Stormpath Passport Strategy #
+# Stormpath Passport Strategy
 
 [![Build Status](https://travis-ci.org/stormpath/passport-stormpath.svg)](https://travis-ci.org/stormpath/passport-stormpath)
 
@@ -8,12 +8,12 @@ This is an authentication strategy for use with the [Passport](http://passportjs
 
 Want to use this with Express?  Check out the [Stormpath Passport Express Sample](https://github.com/stormpath/stormpath-passport-express-sample)
 
-### Links
+## Links
 + [Node.js Quickstart & API Documentation](http://docs.stormpath.com/nodejs/api/home#quickstart) - Get started with Stormpath in an hour!
 + [Stormpath's site](http://stormpath.com/)
 + [Stormpath Support](https://support.stormpath.com/home)
 
-### Build Instructions ###
+## Build Instructions
 
 To use this module in your Node.js application:
 
@@ -21,7 +21,7 @@ To use this module in your Node.js application:
 npm install passport-stormpath
 ```
 
-### Usage
+## Usage
 
 If you have exported your API and App information to the environment as `STORMPATH_API_KEY_ID`, `STORMPATH_API_KEY_SECRET`, `STORMPATH_APP_HREF`, then you may simply do this:
 
@@ -37,24 +37,24 @@ passport.deserializeUser(strategy.deserializeUser);
 
 **Security tip**:  we recommend storing your API credentials in a keyfile, please see the [ApiKey documentation](http://docs.stormpath.com/nodejs/api/apiKey) for instructions.
 
-### Changelog
+## Changelog
 
-#### 0.2.2
+### 0.2.2
 
 Fix issue where `expansions` option was not used by `deserializeUser`, thanks @doublerebel (#11)
 
-#### 0.2.1
+### 0.2.1
 
 Upgrade the Stormpath Node SDK Dependency to 0.6.0
 
-#### 0.2.0
+### 0.2.0
 
 * After authentication the value of `req.user` will now be an `Account` object from the Stormpath Node SDK.
 Previously it was an object literal.
 * Added an `expansions` option to the strategy constructor, allowing you to expand
 resources on the account during login.  See below for example usage.
 
-### Options
+## Options
 
 You can manually pass in your API keys and App Href as string properties:
 
@@ -110,13 +110,13 @@ var strategy = new StormpathStrategy({
 ```
 
 
-### Contributing
+## Contributing
 
 You can make your own contributions by forking the <code>development</code> branch, making your changes, and issuing pull-requests on the <code>development</code> branch.
 
 We regularly maintain our GitHub repository, and are quick about reviewing pull requests and accepting changes!
 
-### Copyright ###
+## Copyright
 
 Copyright &copy; 2014 Stormpath, Inc. and contributors.
 
