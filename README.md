@@ -4,12 +4,16 @@
 [![NPM Downloads](http://img.shields.io/npm/dm/passport-stormpath.svg?style=flat)](https://npmjs.org/package/passport-stormpath)
 [![Build Status](https://img.shields.io/travis/stormpath/passport-stormpath.svg?style=flat)](https://travis-ci.org/stormpath/passport-stormpath)
 
-*A passport strategy for Stormpath, the simple user management API.*
+*A simple strategy for Passport.js that makes it incredibly simple to add users
+and user data to your application. It aims to completely abstract away all user
+registration, login, authentication, and authorization problems, and make
+building secure websites painless. And the best part? You don’t even need a
+database!*
 
 
 ## About
 
-[Stormpath](https://stormpath.com/) is a User Management API that reduces development time with instant-on, scalable user infrastructure. Stormpath's intuitive API and expert support make it easy for developers to authenticate, manage, and secure users and roles in any application.
+[Stormpath](https://stormpath.com/) is a user management API that reduces development time with instant-on, scalable user infrastructure. Stormpath's intuitive API and expert support make it easy for developers to authenticate, manage, and secure users and roles in any application.
 
 This is an authentication strategy for use with the [Passport](http://passportjs.org/) middleware.  Use it in your application to authenticate Stormpath accounts via username and password.
 
