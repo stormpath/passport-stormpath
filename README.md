@@ -144,6 +144,31 @@ var strategy = new StormpathStrategy({
 ```
 
 
+## Documentation
+
+All project documentation is written using [Sphinx](http://sphinx-doc.org/).  To
+build the documentation, you'll need to have Python installed and working.
+
+To install Sphinx and all other dependencies, run:
+
+```console
+$ pip install -r requirements.txt
+```
+
+This will install all the Python packages necessary to build the docs.
+
+Once you have Sphinx installed, go into the `docs` directory to build the
+documentation:
+
+```console
+$ cd docs
+$ make html
+```
+
+When this process is finished, you'll see that all project documentation has
+been built into HTML available at `docs/_build/html`.
+
+
 ## Contributing
 
 You can make your own contributions by forking the `develop` branch, making
