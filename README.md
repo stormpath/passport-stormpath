@@ -93,65 +93,65 @@ passport.deserializeUser(strategy.deserializeUser);
 
 ## Options
 
-You can manually pass in your API keys and App Href as string properties:
+If you'd like to explicitly define your Stormpath API keys and application href
+settings, you can do so when creating the strategy object:
 
 ```javascript
 var strategy = new StormpathStrategy({
-    apiKeyId: "STORMPATH_API_KEY_ID",
-    apiKeySecret: 'STORMPATH_API_KEY_SECRET',
-    appHref: "STORMPATH_APP_HREF"
+  apiKeyId:     'STORMPATH_API_KEY_ID',
+  apiKeySecret: 'STORMPATH_API_KEY_SECRET',
+  appHref:      'STORMPATH_APP_HREF',
 });
 ```
 
-You can also provide your own Stormpath client instance by constructing
-it manually and then passing it and an application reference to the
-strategy constructor:
+You can also provide your own Stormpath client instance by constructing it
+manually and then passing it and an application reference to the strategy
+constructor:
 
 ```javascript
-
 var stormpath = require('stormpath');
 
 var spClient, spApp, strategy;
 
 spClient = new stormpath.Client({
-    apiKey: new stormpath.ApiKey(
-        process.env['STORMPATH_API_KEY_ID'],
-        process.env['STORMPATH_API_KEY_SECRET']
-    )
+  apiKey: new stormpath.ApiKey(
+      process.env['STORMPATH_API_KEY_ID'],
+      process.env['STORMPATH_API_KEY_SECRET']
+  )
 });
 
-spClient.getApplication(process.env['STORMPATH_APP_HREF'],
-    function(err,app){
-        if(err){
-            throw err;
-        }
-        spApp = app;
-        strategy = new StormpathStrategy({
-            spApp: spApp,
-            spClient: spClient
-        });
-        passport.use(strategy);
-    }
-);
-
+spClient.getApplication(process.env['STORMPATH_APP_HREF'], function(err, app) {
+  if (err) {
+    throw err;
+  }
+  spApp = app;
+  strategy = new StormpathStrategy({
+    spApp: spApp,
+    spClient: spClient
+  });
+  passport.use(strategy);
+});
 ```
 
-Account resources (e.g. Custom Data, Groups) can be expanded during the authentication process.
-Declare which resources you would like to expand by providing a comma seperated list
-as the `expansions` option:
+Account resources (*e.g. Custom Data, Groups*) can be automatically expanded
+during the authentication process.  Declare which resources you would like to
+expand by providing a comma separated list as the `expansions` option:
 
 ```javascript
 var strategy = new StormpathStrategy({
-    expansions: 'groups,customData'
+  expansions: 'groups,customData'
 });
 ```
 
 
 ## Contributing
 
-You can make your own contributions by forking the <code>development</code> branch, making your changes, and issuing pull-requests on the <code>development</code> branch.
+You can make your own contributions by forking the `development` branch, making
+your changes, and issuing pull-requests on the `development` branch.
 
-We regularly maintain our GitHub repository, and are quick about reviewing pull requests and accepting changes!
+We regularly maintain our GitHub repository, and are quick about reviewing pull
+requests and accepting changes!
+
 
 ## Copyright
 
