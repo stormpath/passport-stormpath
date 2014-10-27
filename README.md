@@ -33,13 +33,15 @@ use our [express-stormpath](https://docs.stormpath.com/nodejs/express/index.html
 library instead -- it provides a simpler integration experience.
 
 
-## Build Instructions
+## Installation
 
-To use this module in your Node.js application:
+To get started, you need to install this package via
+[npm](https://www.npmjs.org/package/passport-stormpath):
 
+```console
+$ npm install passport-stormpath
 ```
-npm install passport-stormpath
-```
+
 
 ## Usage
 
