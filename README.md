@@ -146,8 +146,8 @@ var strategy = new StormpathStrategy({
 
 ## Contributing
 
-You can make your own contributions by forking the `development` branch, making
-your changes, and issuing pull-requests on the `development` branch.
+You can make your own contributions by forking the `develop` branch, making
+your changes, and issuing pull-requests on the `develop` branch.
 
 We regularly maintain our GitHub repository, and are quick about reviewing pull
 requests and accepting changes!
