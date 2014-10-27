@@ -45,7 +45,21 @@ $ npm install passport-stormpath
 
 ## Usage
 
-If you have exported your API and App information to the environment as `STORMPATH_API_KEY_ID`, `STORMPATH_API_KEY_SECRET`, `STORMPATH_APP_HREF`, then you may simply do this:
+To use this module, you first need to export some environment variables -- these
+will be used by the `passport-stormpath` library to connect to the Stormpath API
+service:
+
+```console
+$ export STORMPATH_API_KEY_ID=xxx
+$ export STORMPATH_API_KEY_SECRET=xxx
+$ export STORMPATH_APP_HREF=xxx
+```
+
+**NOTE**: These variables can be found in your
+[Stormpath dashboard](https://api.stormpath.com/ui/dashboard).
+
+Once you've set the environment variables above, you can then initialize the
+`passport-stormpath` strategy like so:
 
 ```javascript
 var passport = require('passport');
@@ -57,7 +71,6 @@ passport.serializeUser(strategy.serializeUser);
 passport.deserializeUser(strategy.deserializeUser);
 ```
 
-**Security tip**:  we recommend storing your API credentials in a keyfile, please see the [ApiKey documentation](http://docs.stormpath.com/nodejs/api/apiKey) for instructions.
 
 ## Changelog
 
