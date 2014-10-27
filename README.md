@@ -4,20 +4,34 @@
 [![NPM Downloads](http://img.shields.io/npm/dm/passport-stormpath.svg?style=flat)](https://npmjs.org/package/passport-stormpath)
 [![Build Status](https://img.shields.io/travis/stormpath/passport-stormpath.svg?style=flat)](https://travis-ci.org/stormpath/passport-stormpath)
 
-*A simple strategy for Passport.js that makes it incredibly simple to add users
-and user data to your application. It aims to completely abstract away all user
-registration, login, authentication, and authorization problems, and make
-building secure websites painless. And the best part? You don’t even need a
-database!*
+*A passport strategy for Stormpath, the simple user management API.*
 
 
 ## About
 
-[Stormpath](https://stormpath.com/) is a user management API that reduces development time with instant-on, scalable user infrastructure. Stormpath's intuitive API and expert support make it easy for developers to authenticate, manage, and secure users and roles in any application.
+A simple strategy for Passport.js that makes it incredibly simple to add users
+and user data to your application. It aims to completely abstract away all user
+registration, login, authentication, and authorization problems, and make
+building secure websites painless. And the best part? You don't even need a
+database!
 
-This is an authentication strategy for use with the [Passport](http://passportjs.org/) middleware.  Use it in your application to authenticate Stormpath accounts via username and password.
+[Stormpath](https://stormpath.com/) is a user management API that makes it easy to:
 
-Want to use this with Express?  Check out the [Stormpath Passport Express Sample](https://github.com/stormpath/stormpath-passport-express-sample)
+- Create user accounts.
+- Edit user accounts.
+- Store user data with each account.
+- Create groups and roles.
+- Assign users various permissions (groups, roles, etc.).
+- Handle complex authentication and authorization patterns.
+- Log users in via social login with Facebook and Google OAuth.
+- Cache user information for quick access.
+- Scale your application as you get more users.
+- Securely store your users and user data in a central location.
+
+**NOTE**: If you're building an Express.js web application, you might want to
+use our [express-stormpath](https://docs.stormpath.com/nodejs/express/index.html)
+library instead -- it provides a simpler integration experience.
+
 
 ## Links
 + [Node.js Quickstart & API Documentation](http://docs.stormpath.com/nodejs/api/home#quickstart) - Get started with Stormpath in an hour!
