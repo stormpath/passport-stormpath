@@ -33,11 +33,6 @@ use our [express-stormpath](https://docs.stormpath.com/nodejs/express/index.html
 library instead -- it provides a simpler integration experience.
 
 
-## Links
-+ [Node.js Quickstart & API Documentation](http://docs.stormpath.com/nodejs/api/home#quickstart) - Get started with Stormpath in an hour!
-+ [Stormpath's site](http://stormpath.com/)
-+ [Stormpath Support](https://support.stormpath.com/home)
-
 ## Build Instructions
 
 To use this module in your Node.js application:
