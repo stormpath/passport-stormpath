@@ -1,29 +1,65 @@
-# Stormpath Passport Strategy #
+# passport-stormpath
 
-[![Build Status](https://travis-ci.org/stormpath/passport-stormpath.svg)](https://travis-ci.org/stormpath/passport-stormpath)
+[![NPM Version](https://img.shields.io/npm/v/passport-stormpath.svg?style=flat)](https://npmjs.org/package/passport-stormpath)
+[![NPM Downloads](http://img.shields.io/npm/dm/passport-stormpath.svg?style=flat)](https://npmjs.org/package/passport-stormpath)
+[![Build Status](https://img.shields.io/travis/stormpath/passport-stormpath.svg?style=flat)](https://travis-ci.org/stormpath/passport-stormpath)
 
-[Stormpath](http://stormpath.com/) is a User Management API that reduces development time with instant-on, scalable user infrastructure. Stormpath's intuitive API and expert support make it easy for developers to authenticate, manage, and secure users and roles in any application.
+*A passport strategy for Stormpath, the simple user management API.*
 
-This is an authentication strategy for use with the [Passport](http://passportjs.org/) middleware.  Use it in your application to authenticate Stormpath accounts via username and password.
 
-Want to use this with Express?  Check out the [Stormpath Passport Express Sample](https://github.com/stormpath/stormpath-passport-express-sample)
+## About
 
-### Links
-+ [Node.js Quickstart & API Documentation](http://docs.stormpath.com/nodejs/api/home#quickstart) - Get started with Stormpath in an hour!
-+ [Stormpath's site](http://stormpath.com/)
-+ [Stormpath Support](https://support.stormpath.com/home)
+A simple strategy for Passport.js that makes it incredibly simple to add users
+and user data to your application. It aims to completely abstract away all user
+registration, login, authentication, and authorization problems, and make
+building secure websites painless. And the best part? You don't even need a
+database!
 
-### Build Instructions ###
+[Stormpath](https://stormpath.com/) is a user management API that makes it easy to:
 
-To use this module in your Node.js application:
+- Create user accounts.
+- Edit user accounts.
+- Store user data with each account.
+- Create groups and roles.
+- Assign users various permissions (groups, roles, etc.).
+- Handle complex authentication and authorization patterns.
+- Log users in via social login with Facebook and Google OAuth.
+- Cache user information for quick access.
+- Scale your application as you get more users.
+- Securely store your users and user data in a central location.
 
+**NOTE**: If you're building an Express.js web application, you might want to
+use our [express-stormpath](https://docs.stormpath.com/nodejs/express/index.html)
+library instead -- it provides a simpler integration experience.
+
+
+## Installation
+
+To get started, you need to install this package via
+[npm](https://www.npmjs.org/package/passport-stormpath):
+
+```console
+$ npm install passport-stormpath
 ```
-npm install passport-stormpath
+
+
+## Usage
+
+To use this module, you first need to export some environment variables -- these
+will be used by the `passport-stormpath` library to connect to the Stormpath API
+service:
+
+```console
+$ export STORMPATH_API_KEY_ID=xxx
+$ export STORMPATH_API_KEY_SECRET=xxx
+$ export STORMPATH_APP_HREF=xxx
 ```
 
-### Usage
+**NOTE**: These variables can be found in your
+[Stormpath dashboard](https://api.stormpath.com/ui/dashboard).
 
-If you have exported your API and App information to the environment as `STORMPATH_API_KEY_ID`, `STORMPATH_API_KEY_SECRET`, `STORMPATH_APP_HREF`, then you may simply do this:
+Once you've set the environment variables above, you can then initialize the
+`passport-stormpath` strategy like so:
 
 ```javascript
 var passport = require('passport');
@@ -35,88 +71,114 @@ passport.serializeUser(strategy.serializeUser);
 passport.deserializeUser(strategy.deserializeUser);
 ```
 
-**Security tip**:  we recommend storing your API credentials in a keyfile, please see the [ApiKey documentation](http://docs.stormpath.com/nodejs/api/apiKey) for instructions.
 
-### Changelog
+## Changelog
 
-#### 0.2.2
+### 0.2.2
 
-Fix issue where `expansions` option was not used by `deserializeUser`, thanks @doublerebel (#11)
+- Fix issue where `expansions` option was not used by `deserializeUser`, thanks
+  @doublerebel (#11).
 
-#### 0.2.1
+### 0.2.1
 
-Upgrade the Stormpath Node SDK Dependency to 0.6.0
+- Upgrade the Stormpath Node SDK Dependency to 0.6.0
 
-#### 0.2.0
+### 0.2.0
 
-* After authentication the value of `req.user` will now be an `Account` object from the Stormpath Node SDK.
-Previously it was an object literal.
-* Added an `expansions` option to the strategy constructor, allowing you to expand
-resources on the account during login.  See below for example usage.
+- After authentication the value of `req.user` will now be an `Account` object
+  from the Stormpath Node SDK.  Previously it was an object literal.
+- Added an `expansions` option to the strategy constructor, allowing you to
+  expand resources on the account during login.  See below for example usage.
 
-### Options
 
-You can manually pass in your API keys and App Href as string properties:
+## Options
+
+If you'd like to explicitly define your Stormpath API keys and application href
+settings, you can do so when creating the strategy object:
 
 ```javascript
 var strategy = new StormpathStrategy({
-    apiKeyId: "STORMPATH_API_KEY_ID",
-    apiKeySecret: 'STORMPATH_API_KEY_SECRET',
-    appHref: "STORMPATH_APP_HREF"
+  apiKeyId:     'STORMPATH_API_KEY_ID',
+  apiKeySecret: 'STORMPATH_API_KEY_SECRET',
+  appHref:      'STORMPATH_APP_HREF',
 });
 ```
 
-You can also provide your own Stormpath client instance by constructing
-it manually and then passing it and an application reference to the
-strategy constructor:
+You can also provide your own Stormpath client instance by constructing it
+manually and then passing it and an application reference to the strategy
+constructor:
 
 ```javascript
-
 var stormpath = require('stormpath');
 
 var spClient, spApp, strategy;
 
 spClient = new stormpath.Client({
-    apiKey: new stormpath.ApiKey(
-        process.env['STORMPATH_API_KEY_ID'],
-        process.env['STORMPATH_API_KEY_SECRET']
-    )
+  apiKey: new stormpath.ApiKey(
+      process.env['STORMPATH_API_KEY_ID'],
+      process.env['STORMPATH_API_KEY_SECRET']
+  )
 });
 
-spClient.getApplication(process.env['STORMPATH_APP_HREF'],
-    function(err,app){
-        if(err){
-            throw err;
-        }
-        spApp = app;
-        strategy = new StormpathStrategy({
-            spApp: spApp,
-            spClient: spClient
-        });
-        passport.use(strategy);
-    }
-);
-
+spClient.getApplication(process.env['STORMPATH_APP_HREF'], function(err, app) {
+  if (err) {
+    throw err;
+  }
+  spApp = app;
+  strategy = new StormpathStrategy({
+    spApp: spApp,
+    spClient: spClient
+  });
+  passport.use(strategy);
+});
 ```
 
-Account resources (e.g. Custom Data, Groups) can be expanded during the authentication process.
-Declare which resources you would like to expand by providing a comma seperated list
-as the `expansions` option:
+Account resources (*e.g. Custom Data, Groups*) can be automatically expanded
+during the authentication process.  Declare which resources you would like to
+expand by providing a comma separated list as the `expansions` option:
 
 ```javascript
 var strategy = new StormpathStrategy({
-    expansions: 'groups,customData'
+  expansions: 'groups,customData'
 });
 ```
 
 
-### Contributing
+## Documentation
 
-You can make your own contributions by forking the <code>development</code> branch, making your changes, and issuing pull-requests on the <code>development</code> branch.
+All project documentation is written using [Sphinx](http://sphinx-doc.org/).  To
+build the documentation, you'll need to have Python installed and working.
 
-We regularly maintain our GitHub repository, and are quick about reviewing pull requests and accepting changes!
+To install Sphinx and all other dependencies, run:
 
-### Copyright ###
+```console
+$ pip install -r requirements.txt
+```
+
+This will install all the Python packages necessary to build the docs.
+
+Once you have Sphinx installed, go into the `docs` directory to build the
+documentation:
+
+```console
+$ cd docs
+$ make html
+```
+
+When this process is finished, you'll see that all project documentation has
+been built into HTML available at `docs/_build/html`.
+
+
+## Contributing
+
+You can make your own contributions by forking the `develop` branch, making
+your changes, and issuing pull-requests on the `develop` branch.
+
+We regularly maintain our GitHub repository, and are quick about reviewing pull
+requests and accepting changes!
+
+
+## Copyright
 
 Copyright &copy; 2014 Stormpath, Inc. and contributors.
 
