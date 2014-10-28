@@ -7,6 +7,15 @@ Change Log
 All library changes, in descending order.
 
 
+Version 0.2.3
+-------------
+
+**Released on October 28, 2014.**
+
+- Updating README.
+- Adding new Sphinx documentation.
+
+
 Version 0.2.2
 -------------
 
