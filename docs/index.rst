@@ -20,7 +20,7 @@ passport-stormpath.  If you're a new passport-stormpath user, start here!
    about
    setup
    quickstart
-   product
+   resources
    help
 
 
