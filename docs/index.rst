@@ -8,6 +8,13 @@ problems, and make building secure websites painless.  And the best part?
 **You don't even need a database!**
 
 
+.. note::
+    If you're writing an Express.js web application, you should use our
+    `Express-Stormpath`_ library, not this one!  This library should be used if
+    you are building a web application using Passport.js and a non-Express.js
+    web framework!
+
+
 User's Guide
 ------------
 
@@ -41,5 +48,6 @@ In short, you can do pretty much whatever you want!
    upgrading
 
 
-.. _Passport: http://passportjs.org/ "Passport JS"
+.. _Passport: http://passportjs.org/
+.. _Express-Stormpath: https://docs.stormpath.com/nodejs/express/
 .. _Apache License, Version 2.0: http://www.apache.org/licenses/LICENSE-2.0.html
