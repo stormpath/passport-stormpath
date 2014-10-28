@@ -16,7 +16,7 @@ well as set some environment variables.
 
 Before continuing, you'll need to set some environment variables which contain
 your Stormpath credentials (*these credentials can be found inside of the
-``apiKey.properties`` file you downloaded previously*)::
+apiKey.properties file you downloaded previously*)::
 
     $ export STORMPATH_API_KEY_ID=xxx
     $ export STORMPATH_API_KEY_SECRET=xxx
