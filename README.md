@@ -32,6 +32,10 @@ database!
 use our [express-stormpath](https://docs.stormpath.com/nodejs/express/index.html)
 library instead -- it provides a simpler integration experience.
 
+We've recently redone our project documentation -- please visit our
+documentation page for the latest project information:
+https://docs.stormpath.com/nodejs/passport/
+
 
 ## Installation
 
