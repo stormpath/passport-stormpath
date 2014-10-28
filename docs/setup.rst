@@ -35,10 +35,10 @@ permissions.  You can do this by running::
     $ chmod go-rwx ~/.stormpath/apiKey.properties
 
 
-Create a Stormpath Application
-------------------------------
+Check Out Your Stormpath Application
+------------------------------------
 
-Next, you'll want to create a new Stormpath Application.
+Next, you'll want to check out your Stormpath Application.
 
 Stormpath allows you to provision any number of "Applications".  An
 "Application" is just Stormpath's term for a project.
@@ -50,17 +50,14 @@ named "carswap".  Each Stormpath Application should represent a real life
 application of some sort.
 
 The general rule is that you should create one Application per website (or
-project).  Since we're just getting set up, you'll want to create a single
+project).  Since we're just getting set up, we'll only need a single
 Application.
 
-To do this, click the "Applications" tab in the Stormpath dashboard, then click
-"Register an Application" and follow the on-screen instructions.
+By default, Stormpath has already created an Application for you.  To view it,
+click the "Applications" tab in the Stormpath dashboard, then click the
+application you see below.
 
-.. note::
-    Use the default options when creating an Application, this way you'll be
-    able to create users in your new Application without issue.
-
-Now that you've created an Application, you're ready to plug passport-stormpath
+Now that you understand Applications, you're ready to plug passport-stormpath
 into your project!
 
 
