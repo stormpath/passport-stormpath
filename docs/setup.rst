@@ -118,7 +118,7 @@ package from `NPM`_.
 To install passport-stormpath, you'll need ``npm``.  You can install the latest
 version of passport-stormpath by running::
 
-    $ npm install passport-stormpath
+    $ npm install passport passport-stormpath
 
 If you'd like to upgrade to the latest version of passport-stormpath (*maybe you
 have an old version installed*), you can run::
