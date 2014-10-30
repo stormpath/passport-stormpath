@@ -34,11 +34,14 @@ the [Quickstart Guide](https://docs.stormpath.com/nodejs/passport/quickstart.htm
 
 ## Links
 
-+ [15-Minute Tutorial: Build a Webapp With Node.js, Express, Passport and Stormpath](https://stormpath.com/blog/build-app-nodejs-express-passport-stormpath/)
-+ [stormpath-passport-express Sample App repo](https://github.com/stormpath/stormpath-passport-express-sample)
-+ [passport-stormpath documentation](https://docs.stormpath.com/nodejs/passport/)
-+ [Stormpath Node.js SDK](https://github.com/stormpath/stormpath-sdk-node)
-+ [Stormpath website](http://stormpath.com/)
+Below are some resources you might find useful!
+
+- [passport-stormpath documentation](https://docs.stormpath.com/nodejs/passport/)
+- [15-Minute Tutorial: Build a Webapp With Node.js, Express, Passport and Stormpath](https://stormpath.com/blog/build-app-nodejs-express-passport-stormpath/)
+- [stormpath-passport-express Sample App repo](https://github.com/stormpath/stormpath-passport-express-sample)
+- [Stormpath Node.js library](https://github.com/stormpath/stormpath-sdk-node)
+- [Stormpath website](https://stormpath.com/)
+
 
 ## Installation
 
