@@ -6,36 +6,27 @@
 
 *A passport strategy for Stormpath, the simple user management API.*
 
+[Stormpath](https://stormpath.com/) extends Passport.js with a full set of user features: 
 
-## About
-
-A simple strategy for Passport.js that makes it incredibly simple to add users
-and user data to your application. It aims to completely abstract away all user
-registration, login, authentication, and authorization problems, and make
-building secure websites painless. And the best part? You don't even need a
-database!
-
-[Stormpath](https://stormpath.com/) is a user management API that makes it easy to:
-
-- Create user accounts.
-- Edit user accounts.
-- Store user data with each account.
-- Create groups and roles.
-- Assign users various permissions (groups, roles, etc.).
-- Handle complex authentication and authorization patterns.
-- Log users in via social login with Facebook and Google OAuth.
-- Cache user information for quick access.
-- Scale your application as you get more users.
-- Securely store your users and user data in a central location.
+- Create, register and authenticate users
+- Store custom user data with each account.
+- Create and assign permissions (groups, roles, etc.).
+- Handle complex authentication and authorization patterns, like multi-tenancy
+- Log users in via social login with Facebook and Google OAuth
+- Cache user information for quick access
+- Secure all your passwords
+- Automate all your password reset and account verification workflows
 
 **NOTE**: If you're building an Express.js web application, you might want to
 use our [express-stormpath](https://docs.stormpath.com/nodejs/express/index.html)
 library instead -- it provides a simpler integration experience.
 
-We've recently redone our project documentation -- please visit our
-documentation page for the latest project information:
-https://docs.stormpath.com/nodejs/passport/
-
+## Links
++ [15-Minute Tutorial: Build a Webapp With Node.js, Express, Passport and Stormpath](https://stormpath.com/blog/build-app-nodejs-express-passport-stormpath/)
++ [stormpath-passport-express Sample App repo](https://github.com/stormpath/stormpath-passport-express-sample)
++ [passport-stormpath documentation](https://docs.stormpath.com/nodejs/passport/)
++ [Stormpath Node.js SDK](https://github.com/stormpath/stormpath-sdk-node)
++ [Stormpath website](http://stormpath.com/)
 
 ## Installation
 
@@ -74,26 +65,6 @@ passport.use(strategy);
 passport.serializeUser(strategy.serializeUser);
 passport.deserializeUser(strategy.deserializeUser);
 ```
-
-
-## Changelog
-
-### 0.2.2
-
-- Fix issue where `expansions` option was not used by `deserializeUser`, thanks
-  @doublerebel (#11).
-
-### 0.2.1
-
-- Upgrade the Stormpath Node SDK Dependency to 0.6.0
-
-### 0.2.0
-
-- After authentication the value of `req.user` will now be an `Account` object
-  from the Stormpath Node SDK.  Previously it was an object literal.
-- Added an `expansions` option to the strategy constructor, allowing you to
-  expand resources on the account during login.  See below for example usage.
-
 
 ## Options
 
