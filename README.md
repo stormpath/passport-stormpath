@@ -81,6 +81,7 @@ passport.serializeUser(strategy.serializeUser);
 passport.deserializeUser(strategy.deserializeUser);
 ```
 
+
 ## Options
 
 If you'd like to explicitly define your Stormpath API keys and application href
@@ -134,7 +135,7 @@ var strategy = new StormpathStrategy({
 ```
 
 
-## Documentation
+## Build Documentation
 
 All project documentation is written using [Sphinx](http://sphinx-doc.org/).  To
 build the documentation, you'll need to have Python installed and working.
@@ -164,8 +165,10 @@ been built into HTML available at `docs/_build/html`.
 You can make your own contributions by forking the `develop` branch, making
 your changes, and issuing pull-requests on the `develop` branch.
 
-We regularly maintain our GitHub repository, and are quick about reviewing pull
-requests and accepting changes!
+We regularly maintain this repository, and are quick to review pull requests
+and accept changes!
+
+We <333 contributions!
 
 
 ## Copyright
