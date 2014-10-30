@@ -6,7 +6,7 @@
 
 *A passport strategy for Stormpath, the simple user management API.*
 
-[Stormpath](https://stormpath.com/) extends Passport.js with a full set of user features: 
+[Stormpath](https://stormpath.com/) extends Passport.js with a full set of user features:
 
 - Create, register and authenticate users
 - Store custom user data with each account.
