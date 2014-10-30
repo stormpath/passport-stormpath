@@ -6,22 +6,34 @@
 
 *A passport strategy for Stormpath, the simple user management API.*
 
-[Stormpath](https://stormpath.com/) extends Passport.js with a full set of user features:
+[Stormpath](https://stormpath.com/) extends Passport.js, adding a full set of user features:
 
-- Create, register and authenticate users
+- Create, register and authenticate users.
 - Store custom user data with each account.
 - Create and assign permissions (groups, roles, etc.).
-- Handle complex authentication and authorization patterns, like multi-tenancy
-- Log users in via social login with Facebook and Google OAuth
-- Cache user information for quick access
-- Secure all your passwords
-- Automate all your password reset and account verification workflows
+- Handle complex authentication and authorization patterns, like multi-tenancy.
+- Log users in via social login with Facebook and Google OAuth.
+- Cache user information for quick access.
+- Secure all your passwords.
+- Automate all your password reset and account verification workflows.
 
 **NOTE**: If you're building an Express.js web application, you might want to
 use our [express-stormpath](https://docs.stormpath.com/nodejs/express/index.html)
 library instead -- it provides a simpler integration experience.
 
+
+## Documentation
+
+All of this library's documentation can be found here:
+https://docs.stormpath.com/nodejs/passport/
+
+If you'd like to hop right in and get started immediately, please take a look at
+the [Quickstart Guide](https://docs.stormpath.com/nodejs/passport/quickstart.html).
+(*It's ridiculously easy to get started with.*)
+
+
 ## Links
+
 + [15-Minute Tutorial: Build a Webapp With Node.js, Express, Passport and Stormpath](https://stormpath.com/blog/build-app-nodejs-express-passport-stormpath/)
 + [stormpath-passport-express Sample App repo](https://github.com/stormpath/stormpath-passport-express-sample)
 + [passport-stormpath documentation](https://docs.stormpath.com/nodejs/passport/)
