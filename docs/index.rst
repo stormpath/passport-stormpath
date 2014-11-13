@@ -14,7 +14,7 @@ problems, and make building secure websites painless.  And the best part?
     password resets, or implement email verification workflows, etc.  In turn,
     our Passport integration only automates authentication.
 
-    To automate more than just authentication, check out our express-stormpath
+    To automate more than just authentication, check out our `Express-Stormpath`_
     library instead. It provides a full suite of user management features for
     your Express-based web application:
 
