@@ -12,7 +12,7 @@ problems, and make building secure websites painless.  And the best part?
     username and password is valid, or getting their identity from a social
     provider). It is not designed for handling user registrations, manage
     password resets, or implement email verification workflows, etc.  In turn,
-    our Passport integration only automates authentication.  If you need to do more, like password reset, you'll need to also use the `Stormpath Node SDK`_.
+    our Passport strategy only automates authentication.  If you need to do more, like password reset, you'll need to also use the `Stormpath Node SDK`_.
 
     For a more seamless and automated experience, check out 
     our `Express-Stormpath`_ library instead of Passport.js. It provides a full suite of user management features for your Express-based web application:
