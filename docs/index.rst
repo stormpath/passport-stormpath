@@ -15,7 +15,7 @@ problems, and make building secure websites painless.  And the best part?
     our Passport integration only automates authentication.  If you need to do more, like password reset, you'll need to also use the `Stormpath Node SDK`_.
 
     For a more seamless and automated experience, check out 
-    our `Express-Stormpath`_ library instead. It provides a full suite of user management features for your Express-based web application:
+    our `Express-Stormpath`_ library instead of Passport.js. It provides a full suite of user management features for your Express-based web application:
 
     - Create, register and authenticate users.
     - Store custom user data with each account.
