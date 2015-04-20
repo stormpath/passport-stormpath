@@ -66,7 +66,7 @@ $ export STORMPATH_APP_HREF=xxx
 ```
 
 **NOTE**: These variables can be found in your
-[Stormpath dashboard](https://api.stormpath.com/ui/dashboard).
+[Stormpath Admin Console](https://api.stormpath.com/ui/dashboard).
 
 Once you've set the environment variables above, you can then initialize the
 `passport-stormpath` strategy like so:
@@ -84,6 +84,11 @@ passport.deserializeUser(strategy.deserializeUser);
 
 ## Options
 
+There are several options you can define when you are creating the strategy,
+each is listed in this section.
+
+#### Api Keys
+
 If you'd like to explicitly define your Stormpath API keys and application href
 settings, you can do so when creating the strategy object:
 
@@ -94,6 +99,54 @@ var strategy = new StormpathStrategy({
   appHref:      'STORMPATH_APP_HREF',
 });
 ```
+
+#### Account Store
+
+If you wish to authenticate against a particular directory, you can configure
+this for all authentication attempts when constructing the strategy.
+
+```javascript
+var strategy = new StormpathStrategy({
+  accountStore: {
+    href: 'http://api.stormpath.com/v1/directorys/your-directory'
+  }
+});
+```
+
+If you need to dynamically supply the account store, you can pass it
+on a per-call basis by manually invoking passport.
+
+```javascript
+// Authenticate a user.
+router.post('/login',
+  passport.authenticate('stormpath',
+    {
+      successRedirect: '/dashboard',
+      failureRedirect: '/login',
+      failureFlash: 'Invalid email or password.',
+      accountStore: {
+        href: 'http://api.stormpath.com/v1/directorys/your-directory'
+      }
+    }
+  )
+);
+```
+
+
+#### Expansions
+
+Account resources (*e.g. Custom Data, Groups*) can be automatically expanded
+during the authentication process.  Declare which resources you would like to
+expand by providing a comma separated list as the `expansions` option:
+
+```javascript
+var strategy = new StormpathStrategy({
+  expansions: 'groups,customData'
+});
+```
+
+
+#### Stormpath Client
 
 You can also provide your own Stormpath client instance by constructing it
 manually and then passing it and an application reference to the strategy
@@ -121,16 +174,6 @@ spClient.getApplication(process.env['STORMPATH_APP_HREF'], function(err, app) {
     spClient: spClient
   });
   passport.use(strategy);
-});
-```
-
-Account resources (*e.g. Custom Data, Groups*) can be automatically expanded
-during the authentication process.  Declare which resources you would like to
-expand by providing a comma separated list as the `expansions` option:
-
-```javascript
-var strategy = new StormpathStrategy({
-  expansions: 'groups,customData'
 });
 ```
 

@@ -197,4 +197,49 @@ describe('Strategy instance', function(){
         });
         assert.equal(instance.name, "stormpath");
     });
+
+    it('should pass accountStore, if given as a config option',function(){
+        var mockApp = new MockSpApp();
+        var authenticateAccount = sinon.spy(mockApp,'authenticateAccount');
+        var instance = new StormpathStrategy({
+            spApp:mockApp,
+            spClient: new MockSpClient(),
+            accountStore: {
+                href: 'xyz'
+            }
+        });
+        var success = sinon.spy();
+        instance.success = success;
+        expect(instance.authenticate.bind(instance,require('./mocks/req').good)).to.not.throw();
+        expect(authenticateAccount.getCall(0).args[0].accountStore.href).to.equal('xyz');
+    });
+
+    it('should pass accountStore if given as authenticate option',function(){
+        var mockApp = new MockSpApp();
+        var authenticateAccount = sinon.spy(mockApp,'authenticateAccount');
+        var instance = new StormpathStrategy({
+            spApp:mockApp,
+            spClient: new MockSpClient()
+        });
+        var success = sinon.spy();
+        instance.success = success;
+        expect(instance.authenticate.bind(instance,require('./mocks/req').good,{accountStore: {href:'abc'}})).to.not.throw();
+        expect(authenticateAccount.getCall(0).args[0].accountStore.href).to.equal('abc');
+    });
+
+    it('should pass accountStore, overriding a config default, if given as authenticate option',function(){
+        var mockApp = new MockSpApp();
+        var authenticateAccount = sinon.spy(mockApp,'authenticateAccount');
+        var instance = new StormpathStrategy({
+            spApp:mockApp,
+            spClient: new MockSpClient(),
+            accountStore: {
+                href: 'xyz'
+            }
+        });
+        var success = sinon.spy();
+        instance.success = success;
+        expect(instance.authenticate.bind(instance,require('./mocks/req').good,{accountStore: {href:'abc'}})).to.not.throw();
+        expect(authenticateAccount.getCall(0).args[0].accountStore.href).to.equal('abc');
+    });
 });
