@@ -37,6 +37,6 @@
   },
   "dependencies": {
     "stormpath": "^0.6.0",
-    "passport": "^0.3.0"
+    "passport": "^0.3.1"
   }
 }
