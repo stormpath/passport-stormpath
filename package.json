@@ -36,7 +36,7 @@
     "proxyquire": "^0.6.0"
   },
   "dependencies": {
-    "stormpath": "^0.6.0",
+    "stormpath": "^0.15.4",
     "passport": "^0.3.0"
   }
 }
