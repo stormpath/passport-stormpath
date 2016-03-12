@@ -27,7 +27,7 @@
     "grunt-cli": "^0.1.13",
     "grunt-mocha-test": "^0.10.0",
     "chai": "^1.9.1",
-    "grunt-contrib-watch": "^0.6.1",
+    "grunt-contrib-watch": "^1.0.0",
     "grunt-contrib-jshint": "^0.10.0",
     "jshint-stylish": "^0.1.5",
     "istanbul": "^0.2.7",
